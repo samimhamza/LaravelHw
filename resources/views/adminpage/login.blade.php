@@ -1,13 +1,13 @@
-@extends('layout.index')
+@extends('template.index')
 @section('title')
-    Login Page 
+    Login 
 @endsection
 @section('content')
     <div class="container">
         <div class="row" style="margin-top:100px">
             <div class="col-md-6 shadow p-5 rounded mx-auto">
                 <form action="" class="d-flex flex-column">
-                        <h3 class="text-center">Login to Admin</h3>
+                        <h3 class="text-center">Login</h3>
                         <hr>
                     <div class="form-group">
                         <label for="email">Email</label>
@@ -20,7 +20,7 @@
                     <div class="form-group">
                         <button type="submit" class="btn btn-block btn-primary">Login</button>
                     </div>
-                    <a href="register" class="d-inline-flex mx-auto">Register yourself!</a>
+                    <a href="register" class="d-inline-flex mx-auto">Register new user!</a>
                 </form>
             </div>
         </div>

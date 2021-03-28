@@ -1,4 +1,4 @@
-@extends('layout.index')
+@extends('template.index')
 @section('title') News @endsection
 @section('content')
 

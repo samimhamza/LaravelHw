@@ -23,4 +23,4 @@ Route::get('admin', [UserAuthController::class, 'login']);
 // Register Route
 Route::get('register', [UserAuthController::class, 'register']);
 //Create
-Route::post('create', [UserAuthController::class, 'create'])->name('admin.create');
+Route::post('create', [UserAuthController::class, 'create'])->name('adminpage.create');

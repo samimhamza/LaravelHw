@@ -9,10 +9,10 @@ use App\Models\User;
 class UserAuthController extends Controller
 {
     function login(){
-        return view('admin.login');
+        return view('adminpage.login');
     }
     function register(){
-        return view('admin.register');
+        return view('adminpage.register');
     }
     function create(Request $request){
         //Validate Requests

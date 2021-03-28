@@ -1,6 +1,6 @@
-@extends('layout.index')
+@extends('template.index')
 @section('title')
-    Register Page
+    Register 
 @endsection
 @section('content')
 <div class="container">
@@ -8,7 +8,7 @@
         <div class="col-md-6 shadow p-5 rounded mx-auto">
             <form action="{{ route('admin.create') }}" method="post" class="d-flex flex-column">
                 @csrf
-                    <h3 class="text-center">Register yourself</h3>
+                    <h3 class="text-center">Register Here</h3>
                     <hr>
                 
                 @if (Session::get('success'))
