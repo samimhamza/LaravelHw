@@ -8,7 +8,7 @@
         <div class="col-md-8 shadow p-5 rounded mx-auto background" >
             <form action="{{ route('adminpage.create') }}" method="post" class="d-flex flex-column">
                 @csrf
-                    <h1 class="">Register Here</h1>
+                    <h1 class="font-weight-bold">Register Here</h1>
                     <hr>
                 
                 @if (Session::get('success'))

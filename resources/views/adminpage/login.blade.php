@@ -8,7 +8,7 @@
             <div class="col-md-6 shadow p-5 rounded mx-auto background">
                 <form action="{{ route('adminpage.check') }}" method="POST" class="d-flex flex-column">
                     @csrf
-                        <h1 class=""">Login</h1>
+                        <h1 class="font-weight-bold"">Login</h1>
                         <hr>
                     @if (Session::get('fail'))
                         <div class="results">

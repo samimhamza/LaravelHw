@@ -56,6 +56,21 @@ class UserAuthController extends Controller
         }
     }
     function profile(){
-        return view('adminpage.profile');
+        if(session()->has('LoggedUser')){
+            $user = User::where('id','=',session('LoggedUser'))->first();
+            $data = [
+                'LoggedUserInfo'=>$user
+            ];
+            return view('adminpage.profile', $data);
+        }
+        else{
+            return redirect('login');
+        }
+    }
+    function logout(){
+        if(session()->has('LoggedUser')){
+            session()->pull('LoggedUser');
+            return redirect('login');
+        }
     }
 }

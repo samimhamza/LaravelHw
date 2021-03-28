@@ -19,7 +19,7 @@ Route::get('/', function () {
 });
 
 // Login Route
-Route::get('admin', [UserAuthController::class, 'login']);
+Route::get('login', [UserAuthController::class, 'login']);
 // Register Route
 Route::get('register', [UserAuthController::class, 'register']);
 //Create
@@ -28,3 +28,4 @@ Route::post('create', [UserAuthController::class, 'create'])->name('adminpage.cr
 Route::post('check', [UserAuthController::class, 'check'])->name('adminpage.check');
 //Profile
 Route::get('profile', [UserAuthController::class, 'profile']);
+Route::get('logout', [UserAuthController::class, 'logout']);
