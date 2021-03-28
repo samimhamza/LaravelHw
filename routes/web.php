@@ -19,13 +19,13 @@ Route::get('/', function () {
 });
 
 // Login Route
-Route::get('login', [UserAuthController::class, 'login']);
+Route::get('login', [UserAuthController::class, 'login'])->middleware('AlreadyLoggedIn');
 // Register Route
-Route::get('register', [UserAuthController::class, 'register']);
+Route::get('register', [UserAuthController::class, 'register'])->middleware('AlreadyLoggedIn');
 //Create
 Route::post('create', [UserAuthController::class, 'create'])->name('adminpage.create');
 //Check method
 Route::post('check', [UserAuthController::class, 'check'])->name('adminpage.check');
 //Profile
-Route::get('profile', [UserAuthController::class, 'profile']);
+Route::get('profile', [UserAuthController::class, 'profile'])->middleware('isLogged');
 Route::get('logout', [UserAuthController::class, 'logout']);

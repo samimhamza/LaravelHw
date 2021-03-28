@@ -55,18 +55,17 @@ class UserAuthController extends Controller
             return back()->with('fail','Acount not found!');
         }
     }
+    
     function profile(){
         if(session()->has('LoggedUser')){
             $user = User::where('id','=',session('LoggedUser'))->first();
             $data = [
                 'LoggedUserInfo'=>$user
             ];
-            return view('adminpage.profile', $data);
         }
-        else{
-            return redirect('login');
-        }
+        return view('adminpage.profile', $data);
     }
+
     function logout(){
         if(session()->has('LoggedUser')){
             session()->pull('LoggedUser');
