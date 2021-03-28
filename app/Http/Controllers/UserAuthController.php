@@ -29,9 +29,9 @@ class UserAuthController extends Controller
         $query = $user->save();
         
         if($query){
-            return back()->with('success','You have been successfully register');
+            return back()->with('success','Successfully registered');
         }else{
-            return bakc()->with('fail', 'Somthing went wrong');
+            return bakc()->with('fail', 'Sorry!, somethings wrong!');
         }
     }
 }
