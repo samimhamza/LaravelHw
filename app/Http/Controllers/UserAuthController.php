@@ -40,10 +40,10 @@ class UserAuthController extends Controller
         //Validation
         $request->validate([
             'emailorusername'=>'required',            
-            'password'=>'required|min=5|max=12'
+            'password'=>'required|min:5|max:12'
         ]);
 
-        $user = User::where('email', '=', $request->emailorusername || 'username', '=', $request->emailorusername);
+        $user = User::where('email', '=', $request->emailorusername)->orWhere('username', '=', $request->emailorusername)->first();
         if($user){
             if(Hash::check($request->password, $user->password)){
                 $request->session()->put('LoggedUser',$user->id);
@@ -56,6 +56,6 @@ class UserAuthController extends Controller
         }
     }
     function profile(){
-        return view('admin.profile');
+        return view('adminpage.profile');
     }
 }

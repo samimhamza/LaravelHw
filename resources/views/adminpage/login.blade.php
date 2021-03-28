@@ -10,6 +10,13 @@
                     @csrf
                         <h1 class=""">Login</h1>
                         <hr>
+                    @if (Session::get('fail'))
+                        <div class="results">
+                            <div class="alert alert-danger">
+                                {{ Session::get('fail') }}
+                            </div>
+                        </div>
+                    @endif
                     <div class="form-group">
                         <label for="emailorusername">Email or username</label>
                         <input type="text" name="emailorusername" placeholder="Enter email" class="form-control" value="{{ old('emailorusername') }}">
