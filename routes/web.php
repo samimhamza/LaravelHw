@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+
+// Login Route
+Route::get('admin', [UserAuthController::class, 'login']);
+// Register Route
+Route::get('register', [UserAuthController::class, 'register']);
+//Create
+Route::post('create', [UserAuthController::class, 'create'])->name('admin.create');
