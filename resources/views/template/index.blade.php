@@ -9,4 +9,8 @@
     <title> @yield('title') </title>
 </head>
 <body>
-    <nav></nav>
+
+    @yield('content')
+
+</body>
+</html>
