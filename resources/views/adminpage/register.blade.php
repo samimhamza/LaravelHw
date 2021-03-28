@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row" style="margin-top:100px">
         <div class="col-md-6 shadow p-5 rounded mx-auto">
-            <form action="{{ route('admin.create') }}" method="post" class="d-flex flex-column">
+            <form action="{{ route('adminpage.create') }}" method="post" class="d-flex flex-column">
                 @csrf
                     <h3 class="text-center">Register Here</h3>
                     <hr>
