@@ -5,10 +5,10 @@
 @section('content')
 <div class="container">
     <div class="row" style="margin-top:100px">
-        <div class="col-md-6 shadow p-5 rounded mx-auto">
+        <div class="col-md-8 shadow p-5 rounded mx-auto background" >
             <form action="{{ route('adminpage.create') }}" method="post" class="d-flex flex-column">
                 @csrf
-                    <h3 class="text-center">Register Here</h3>
+                    <h1 class="">Register Here</h1>
                     <hr>
                 
                 @if (Session::get('success'))
@@ -30,17 +30,22 @@
                     <span class="text-danger">@error('name') {{ $message }} @enderror</span>
                 </div>
                 <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" placeholder="Enter username" class="form-control" value="{{ old('username') }}">
+                    <span class="text-danger">@error('username') {{ $message }} @enderror</span>
+                </div>
+                <div class="form-group">
                     <label for="email">Email</label>
                     <input type="text" name="email" placeholder="Enter email" class="form-control" value="{{ old('email') }}">
                     <span class="text-danger">@error('email') {{ $message }} @enderror</span>
                 </div>
                 <div class="form-group">
-                    <label for="email">Password</label>
+                    <label for="password">Password</label>
                     <input type="password" name="password" placeholder="Enter password" class="form-control">
                     <span class="text-danger">@error('password') {{ $message }} @enderror</span>
                 </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-block btn-primary">Register</button>
+                <div class="form-group d-inline-flex mx-auto ">
+                    <button type="submit" class="btn px-5 btn-primary">Register</button>
                 </div>
                 <a href="admin" class="d-inline-flex mx-auto">Already have Acount!</a>
             </form>

@@ -18,12 +18,14 @@ class UserAuthController extends Controller
         //Validate Requests
         $request->validate([
             'name'=>'required',
+            'username'=>'required',
             'email'=>'required|email|unique:users',
             'password'=>'required|min:5|max:12'
         ]);
         //Registering the User
         $user = new User;
         $user->name = $request->name;
+        $user->username = $request->username;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $query = $user->save();
@@ -33,5 +35,27 @@ class UserAuthController extends Controller
         }else{
             return bakc()->with('fail', 'Sorry!, somethings wrong!');
         }
+    }
+    function check(Request $request){
+        //Validation
+        $request->validate([
+            'emailorusername'=>'required',            
+            'password'=>'required|min=5|max=12'
+        ]);
+
+        $user = User::where('email', '=', $request->emailorusername || 'username', '=', $request->emailorusername);
+        if($user){
+            if(Hash::check($request->password, $user->password)){
+                $request->session()->put('LoggedUser',$user->id);
+                return redirect('profile');
+            }else{
+                return back()->with('fail','Invalid Password');
+            }
+        }else{
+            return back()->with('fail','Acount not found!');
+        }
+    }
+    function profile(){
+        return view('admin.profile');
     }
 }
