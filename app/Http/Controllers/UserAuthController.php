@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class UserAuthController extends Controller
 {
@@ -55,7 +56,7 @@ class UserAuthController extends Controller
             return back()->with('fail','Acount not found!');
         }
     }
-    
+
     function profile(){
         if(session()->has('LoggedUser')){
             $user = User::where('id','=',session('LoggedUser'))->first();
@@ -70,6 +71,37 @@ class UserAuthController extends Controller
         if(session()->has('LoggedUser')){
             session()->pull('LoggedUser');
             return redirect('login');
+        }
+    }
+    function edit(){
+        $user = User::where('id','=',session('LoggedUser'))->first();
+            $data = [
+                'LoggedUserInfo'=>$user
+            ];
+        return view('adminpage.edit', $data);    
+    }
+    
+
+    function update(Request $req){
+        //Validate Requests
+        $req->validate([
+            'name'=>'required',
+            'username'=>'required',
+            'email'=>'required|email|unique:users',
+            'password'=>'required|min:5|max:12'
+        ]);
+        //Registering the User
+        $user = User::find($req->id);
+        $user->name = $req->name;
+        $user->username = $req->username;
+        $user->email = $req->email;
+        $user->password = Hash::make($req->password);
+        $query = $user->save();
+        
+        if($query){
+            return redirect('profile')->with('success','Successfully Updated');
+        }else{
+            return bakc()->with('fail', 'Sorry!, somethings wrong!');
         }
     }
 }

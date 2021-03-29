@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserAuthController;
+use App\Http\Controllers\PostsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +15,8 @@ use App\Http\Controllers\UserAuthController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [PostsController::class, 'index']);
+
 
 // Login Route
 Route::get('login', [UserAuthController::class, 'login'])->middleware('AlreadyLoggedIn');
@@ -29,3 +29,6 @@ Route::post('check', [UserAuthController::class, 'check'])->name('adminpage.chec
 //Profile
 Route::get('profile', [UserAuthController::class, 'profile'])->middleware('isLogged');
 Route::get('logout', [UserAuthController::class, 'logout']);
+Route::get('edit', [UserAuthController::class, 'edit']);
+Route::post('update', [UserAuthController::class, 'update'])->name('adminpage.update');
+

@@ -6,6 +6,13 @@
     <div class="container">
         <div class="row p-3 shadow rounded background " style="margin-top:100px">
             <h1 class="font-weight-bold">Profile Info</h1><hr>
+            @if (Session::get('success'))
+                <div class="results">
+                    <div class="alert alert-success">
+                        {{ Session::get('success') }}
+                    </div>
+                </div>
+            @endif
             <table class="table table-hover">
                 <thead>
                     <th>Name</th>
@@ -18,7 +25,10 @@
                         <td>{{ $LoggedUserInfo->name }}</td>
                         <td>{{ $LoggedUserInfo->email }}</td>
                         <td>{{ $LoggedUserInfo->username }}</td>
-                        <td><a href="logout">Logout</a></td>
+                        <td>
+                            <a class="btn btn-dark" href="edit">Update</a>
+                            <a class="btn btn-dark" href="logout">Logout</a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
