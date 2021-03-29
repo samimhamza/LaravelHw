@@ -62,5 +62,9 @@ class PostsController extends Controller
         }
     }
 
-
+    function deletePost($id){
+        $data = Post::find($id);
+        $data->delete();
+        return redirect('/')->with('success','Successfully deleted');
+    }
 }

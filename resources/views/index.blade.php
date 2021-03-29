@@ -40,7 +40,7 @@
                         <h5 class="card-title font-weight-bold">{{ $post->title }}</h5>
                         <p class="card-text">{{ $post->content }}</p>
                         <a href={{ "editPost/".$post->id }} class="btn btn-dark">Edit</a>
-                        <a href="" class="btn btn-dark">Delete</a>
+                        <a href={{ "deletePost/".$post->id }} class="btn btn-dark">Delete</a>
                     </div>
                 </div>    
             @endforeach
