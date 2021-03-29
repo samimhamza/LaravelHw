@@ -41,7 +41,7 @@
                 <div class="form-group d-inline-flex mx-auto ">
                     <button type="submit" class="btn px-5 btn-primary">Register</button>
                 </div>
-                <a href="admin" class="d-inline-flex mx-auto">Already have Acount!</a>
+                <a href="{{ url('login') }}" class="d-inline-flex mx-auto">Already have Acount!</a>
             </form>
         </div>
     </div>
