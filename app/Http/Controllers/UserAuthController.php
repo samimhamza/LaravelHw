@@ -32,7 +32,8 @@ class UserAuthController extends Controller
         $query = $user->save();
         
         if($query){
-            return back()->with('success','Successfully registered');
+            $request->session()->put('LoggedUser',$user->id);
+            return redirect('profile')->with('success','Successfully registered');
         }else{
             return bakc()->with('fail', 'Sorry!, somethings wrong!');
         }
@@ -70,7 +71,7 @@ class UserAuthController extends Controller
     function logout(){
         if(session()->has('LoggedUser')){
             session()->pull('LoggedUser');
-            return redirect('login');
+            return redirect('/')->with('logout','Successfully logged out');
         }
     }
     function edit(){

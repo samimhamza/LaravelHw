@@ -11,13 +11,7 @@
                     <h1 class="font-weight-bold">Register Here</h1>
                     <hr>
                 
-                @if (Session::get('success'))
-                    <div class="results">
-                        <div class="alert alert-success">
-                            {{ Session::get('success') }}
-                        </div>
-                    </div>
-                @elseif (Session::get('fail'))
+                @if (Session::get('fail'))
                     <div class="results">
                         <div class="alert alert-danger">
                             {{ Session::get('fail') }}

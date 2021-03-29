@@ -5,11 +5,31 @@
 @section('content')
     <div class="container">
         <div style="margin-top: 50px" class="d-flex justify-content-between">
-            <button class="btn btn-danger mx-5">Create new Post</button>
-            <div>
-                <button class="btn btn-primary">Register</button>
-                <button class="btn btn-primary mr-5 ">Login</button>
-            </div>
+            <a href="{{ url('registerPost') }}" class="btn btn-danger mx-5">Create new Post</a>
+            @if (Session::get('logout'))
+                <div class="results">
+                    <div class="alert alert-success">
+                        {{ Session::get('logout') }}
+                    </div>
+                </div>
+            @endif
+            @if (Session::get('success'))
+                <div class="results">
+                    <div class="alert alert-success">
+                        {{ Session::get('success') }}
+                    </div>
+                </div>
+            @endif
+            @if (!session()->has('LoggedUser'))
+                <div>
+                    <a href="{{ url('login') }}" class="btn btn-primary">Login</a>
+                    <a href="{{ url('register') }}" class="btn btn-primary mr-5 ">Register</a>
+                </div>
+            @else
+                <div>
+                    <a href="{{ url('logout') }}" class="btn btn-primary mr-5">Logout</a>
+                </div>
+            @endif
         </div>
         <div class="d-flex flex-wrap">
             @foreach ($posts as $post)

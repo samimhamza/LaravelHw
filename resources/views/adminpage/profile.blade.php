@@ -28,6 +28,7 @@
                         <td>
                             <a class="btn btn-dark" href="edit">Update</a>
                             <a class="btn btn-dark" href="logout">Logout</a>
+                            <a href="{{ url('/') }}" class="btn btn-dark">Go to News</a>
                         </td>
                     </tr>
                 </tbody>
