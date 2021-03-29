@@ -36,4 +36,31 @@ class PostsController extends Controller
         }
     }
 
+    function editPost($id){
+        $post = Post::find($id);
+            
+        return view('posts.edit', ['post'=>$post]);    
+    }
+    
+
+    function updatePost(Request $req){
+        //Validate Requests
+        $req->validate([
+            'title'=>'required',
+            'content'=>'required',
+        ]);
+        //Registering the User
+        $post = Post::find($req->id);
+        $post->title = $req->title;
+        $post->content = $req->content;
+        $query = $post->save();
+        
+        if($query){
+            return redirect('/')->with('success','Successfully Updated');
+        }else{
+            return bakc()->with('fail', 'Sorry!, somethings wrong!');
+        }
+    }
+
+
 }

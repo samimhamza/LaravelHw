@@ -35,3 +35,5 @@ Route::post('update', [UserAuthController::class, 'update'])->name('adminpage.up
 //Post CRUD operations
 Route::get('registerPost', [PostsController::class, 'registerPost']);
 Route::post('createPost', [PostsController::class, 'createPost'])->name('createPost');
+Route::get('editPost/{id}', [PostsController::class, 'editPost'])->name('editPost');
+Route::post('updatePost', [PostsController::class, 'updatePost'])->name('updatePost');

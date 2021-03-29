@@ -5,7 +5,9 @@
 @section('content')
     <div class="container">
         <div style="margin-top: 50px" class="d-flex justify-content-between">
-            <a href="{{ url('registerPost') }}" class="btn btn-danger mx-5">Create new Post</a>
+            <div>
+                <a href="{{ url('registerPost') }}" class="btn btn-danger mx-5">Create new Post</a>
+            </div>
             @if (Session::get('logout'))
                 <div class="results">
                     <div class="alert alert-success">
@@ -37,8 +39,8 @@
                     <div class="card-body text-center">
                         <h5 class="card-title font-weight-bold">{{ $post->title }}</h5>
                         <p class="card-text">{{ $post->content }}</p>
-                        <button class="btn btn-dark">Edit</button>
-                        <button class="btn btn-dark">Delete</button>
+                        <a href={{ "editPost/".$post->id }} class="btn btn-dark">Edit</a>
+                        <a href="" class="btn btn-dark">Delete</a>
                     </div>
                 </div>    
             @endforeach
